@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: python-based-flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-based-flask
+  template:
+    metadata:
+      labels:
+        app: python-based-flask
+    spec:
+      containers:
+      - name: flask
+        image: omnagare/new-python-based:latest
+        ports:
+        - containerPort: 5000
+
